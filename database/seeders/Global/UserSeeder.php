@@ -18,9 +18,9 @@ class UserSeeder extends Seeder
             'name' => 'Super Admin',
             'username' => 'super.admin',
             'email' => 'distrostudiodev@gmail.com',
-            'account_status' => true,
+            'account_status' => 2,
             'password' => Hash::make('superadmin123'),
-            'register_at' => now()
+            'register_at' => now('Asia/Jakarta')
         ]);
         
         $super_admin_account->assignRole('Super Admin');

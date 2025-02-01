@@ -25,7 +25,7 @@ class LoginDashboardRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required', 'string'],
             'password' => ['required', 'string', 'min:4'],
         ];
     }
@@ -34,7 +34,7 @@ class LoginDashboardRequest extends FormRequest
     {
         return [
             'email.required' => 'Silahkan masukkan email anda terlebih dahulu.',
-            'email.email' => 'Silahkan masukkan email yang valid, bisa berupa @gmail.com atau yang lain.',
+            // 'email.email' => 'Silahkan masukkan email yang valid, bisa berupa @gmail.com atau yang lain.',
             'password.required' => 'Kolom password wajib diisi terlebih dahulu.',
             'password.min' => 'Minimum password yang harus diisi adalah 4 karakter.',
         ];

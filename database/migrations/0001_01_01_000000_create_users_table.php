@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('account_status');
+            $table->integer('account_status')->default(1); // 1 = inactive, 2 = active, 3 = deactive
             $table->string('register_at');
+            $table->string('deactivate_at')->nullable();
+            $table->string('last_login')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

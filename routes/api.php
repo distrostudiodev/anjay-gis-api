@@ -6,11 +6,9 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/test', [LoginController::class, 'login']);
-
 Route::post('/login', [LoginController::class, 'login']);
-Route::post('/forgot-password', [ForgotPasswordController::class, 'login']);
-Route::post('/reset-password', [ResetPasswordController::class, 'login']);
+// Route::post('/forgot-password', [ForgotPasswordController::class, 'login']);
+// Route::post('/reset-password', [ResetPasswordController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     // ! GLOBAL REQUEST
