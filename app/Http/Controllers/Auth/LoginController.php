@@ -29,7 +29,7 @@ class LoginController extends Controller
             Log::info("| Auth | - Login failed for email: {$credential['email']}, Invalid credentials");
             return response()->json([
                 'status' => Response::HTTP_UNAUTHORIZED,
-                'message' => 'Password atau username/email yang anda tidak valid, silahkan periksa kembali dan pastikan akun anda sudah terdaftar',
+                'message' => 'Password atau username/email yang anda tidak valid, silahkan periksa kembali dan pastikan akun anda sudah terdaftar.',
             ], Response::HTTP_UNAUTHORIZED);
         }
 
@@ -38,9 +38,9 @@ class LoginController extends Controller
             Auth::logout();
             Log::info("| Auth | - Login failed for email: {$credential['email']}, User is not active since {$user->deactivate_at}");
             if ($user->account_status == 1) {
-                $message = "Kami mendeteksi bahwa akun anda belum diaktifkan sejak " . DateHelper::formatTanggalIndonesia($user->created_at, 1) . ", silahkan hubungi admin untuk melakukan aktivasi";
+                $message = "Kami mendeteksi bahwa akun anda belum diaktifkan sejak " . DateHelper::formatTanggalIndonesia($user->created_at, 1) . ", silahkan hubungi admin untuk melakukan aktivasi.";
             } else if ($user->account_status == 3) {
-                $message = "Kami mendeteksi bahwa akun anda telah dinonaktifkan sejak " . DateHelper::formatTanggalIndonesia($user->deactivate_at, 1) . ", silahkan hubungi admin untuk melakukan aktivasi kembali";
+                $message = "Kami mendeteksi bahwa akun anda telah dinonaktifkan sejak " . DateHelper::formatTanggalIndonesia($user->deactivate_at, 1) . ", silahkan hubungi admin untuk melakukan aktivasi kembali.";
             }
             return response()->json([
                 'status' => Response::HTTP_UNAUTHORIZED,
@@ -61,7 +61,7 @@ class LoginController extends Controller
 
         return response()->json([
             'status' => Response::HTTP_OK,
-            'message' => 'Login success! Selamat datang, ' . $user->name,
+            'message' => 'Login success! Selamat datang, ' . $user->name . '!',
             'data' => [
                 'user' => $filteredUser,
                 'roles' => $filteredRoles,
@@ -77,7 +77,7 @@ class LoginController extends Controller
         if (!$user) {
             return response()->json([
                 'status' => Response::HTTP_UNAUTHORIZED,
-                'message' => 'Maaf akun pengguna terkait tidak ditemukan',
+                'message' => 'Maaf akun pengguna terkait tidak ditemukan.',
             ], Response::HTTP_UNAUTHORIZED);
         }
         $filteredUser = $user->makeHidden(['password', 'remember_token', 'roles']);
@@ -85,7 +85,7 @@ class LoginController extends Controller
         $filteredRoles = $roles ? $roles->makeHidden(['permissions']) : null;
         return response()->json([
             'status' => Response::HTTP_OK,
-            'message' => 'Login success! Selamat datang, ' . $user->name,
+            'message' => 'Login success! Selamat datang, ' . $user->name . '!',
             'data' => [
                 'user' => $filteredUser,
                 'roles' => $filteredRoles,
@@ -106,7 +106,7 @@ class LoginController extends Controller
 
         return response()->json([
             'status' => Response::HTTP_OK,
-            'message' => 'Anda berhasil melakukan logout',
+            'message' => 'Anda berhasil melakukan logout.',
         ], Response::HTTP_OK);
     }
 }

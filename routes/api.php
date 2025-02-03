@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [LoginController::class, 'login']);
-// Route::post('/forgot-password', [ForgotPasswordController::class, 'login']);
-// Route::post('/reset-password', [ResetPasswordController::class, 'login']);
+Route::post('/forgot-password-send-otp', [ForgotPasswordController::class, 'sendOTP']);
+Route::post('/forgot-password-verify-otp', [ForgotPasswordController::class, 'verifyOTP']);
+Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword']);
 
 Route::middleware('auth:sanctum')->group(function () {
     // ! GLOBAL REQUEST
@@ -21,7 +22,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
         // ! GIS FEATURE
         Route::group(['prefix' => '/data-bidang'], function () {
-            
+
         });
 
         Route::group(['prefix' => '/geojson-data'], function () {
